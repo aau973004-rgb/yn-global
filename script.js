@@ -1,57 +1,52 @@
-let isAdmin = false;
+let isEditor = false;
 
 let divisi = [
   {
     nama: "YN Transport",
     gambar: "https://via.placeholder.com/800x300",
     tagline: "Mobilitas Tanpa Batas",
-    deskripsi: "Layanan transportasi darat profesional.",
-    layanan: 120,
-    jarak: 450000,
-    kontak: "transport@ynglobal.com"
-  },
-  {
-    nama: "YN Logistic",
-    gambar: "https://via.placeholder.com/800x300",
-    tagline: "Distribusi Cepat & Aman",
-    deskripsi: "Solusi logistik modern.",
-    layanan: 89000,
-    jarak: 1200000,
-    kontak: "logistic@ynglobal.com"
+    deskripsi: "Layanan transportasi darat profesional."
   }
 ];
 
+/* MENU */
 function toggleMenu() {
   document.getElementById("sidebar").classList.toggle("active");
+  document.getElementById("overlay").classList.toggle("active");
 }
 
-function toggleLayanan() {
+function closeMenu() {
+  document.getElementById("sidebar").classList.remove("active");
+  document.getElementById("overlay").classList.remove("active");
+}
+
+function hideAll() {
+  document.querySelectorAll("section").forEach(sec => sec.classList.add("hidden"));
+}
+
+function showLayanan() {
   hideAll();
   document.getElementById("layanan").classList.remove("hidden");
   renderDivisi();
+  closeMenu();
 }
 
 function showTentang() {
   hideAll();
   document.getElementById("tentang").classList.remove("hidden");
+  closeMenu();
 }
 
 function showHubungi() {
   hideAll();
   document.getElementById("hubungi").classList.remove("hidden");
+  closeMenu();
 }
 
-function hideAll() {
-  document.getElementById("layanan").classList.add("hidden");
-  document.getElementById("detail-divisi").classList.add("hidden");
-  document.getElementById("tentang").classList.add("hidden");
-  document.getElementById("hubungi").classList.add("hidden");
-}
-
+/* DIVISI */
 function renderDivisi() {
   const list = document.getElementById("divisi-list");
   list.innerHTML = "";
-
   divisi.forEach((d, index) => {
     list.innerHTML += `
       <div class="divisi-card" onclick="showDetail(${index})">
@@ -71,49 +66,57 @@ function showDetail(index) {
   detail.innerHTML = `
     <div class="detail-box">
       <img src="${d.gambar}">
-      ${isAdmin ? `<input type="file" onchange="uploadImage(event, ${index})">` : ""}
+      ${isEditor ? `<input type="file" onchange="uploadImage(event, ${index})">` : ""}
       <h2>${d.nama}</h2>
-      <h3>${d.tagline}</h3>
-      <p>${d.deskripsi}</p>
-
-      <h4>Data Operasional</h4>
-      <p>Total Layanan: ${d.layanan}</p>
-      <p>Total Jarak: ${d.jarak} KM</p>
-
-      ${isAdmin ? `<button onclick="tambahData(${index})">Tambah Data</button>` : ""}
-
-      <h4>Hubungi Kami</h4>
-      <p>${d.kontak}</p>
+      ${isEditor ? `<input value="${d.tagline}" onchange="editTagline(this.value, ${index})">` : `<h3>${d.tagline}</h3>`}
+      ${isEditor ? `<textarea onchange="editDesc(this.value, ${index})">${d.deskripsi}</textarea>` : `<p>${d.deskripsi}</p>`}
     </div>
   `;
 }
 
-function tambahData(index) {
-  divisi[index].layanan += 100;
-  divisi[index].jarak += 1000;
-  showDetail(index);
-}
-
-function uploadImage(event, index) {
-  const file = event.target.files[0];
-  const reader = new FileReader();
-  reader.onload = function(e) {
-    divisi[index].gambar = e.target.result;
-    showDetail(index);
-  };
-  reader.readAsDataURL(file);
-}
-
-function adminLogin() {
-  let pass = prompt("Masukkan password admin:");
-  if (pass === "admin123") {
-    isAdmin = true;
-    alert("Login Admin Berhasil");
-  } else {
-    alert("Password salah");
+/* EDITOR */
+function editorLogin() {
+  let pass = prompt("Password Editor:");
+  if (pass === "editor123") {
+    isEditor = true;
+    alert("Login Editor Berhasil");
   }
 }
 
+function uploadImage(event, index) {
+  const reader = new FileReader();
+  reader.onload = e => {
+    divisi[index].gambar = e.target.result;
+    showDetail(index);
+  };
+  reader.readAsDataURL(event.target.files[0]);
+}
+
+function editTagline(val, index) {
+  divisi[index].tagline = val;
+}
+
+function editDesc(val, index) {
+  divisi[index].deskripsi = val;
+}
+
+/* DARK MODE */
 function toggleDarkMode() {
   document.body.classList.toggle("dark");
 }
+
+/* LOGO EDIT */
+document.getElementById("mainLogo").addEventListener("click", function() {
+  if (isEditor) {
+    let input = document.createElement("input");
+    input.type = "file";
+    input.onchange = function(e) {
+      const reader = new FileReader();
+      reader.onload = function(ev) {
+        document.getElementById("mainLogo").src = ev.target.result;
+      };
+      reader.readAsDataURL(e.target.files[0]);
+    };
+    input.click();
+  }
+});
