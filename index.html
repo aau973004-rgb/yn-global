@@ -13,29 +13,40 @@
     <h1>YN GLOBAL</h1>
   </div>
 
-  <nav>
-    <a onclick="toggleLayanan()">Layanan</a>
-    <a href="#tentang">Tentang Kami</a>
-    <a onclick="adminLogin()">Login Admin</a>
-    <a class="toggle-dark" onclick="toggleDarkMode()">Dark Mode</a>
-  </nav>
+  <div class="hamburger" onclick="toggleMenu()">☰</div>
 </header>
 
+<!-- SIDEBAR MENU -->
+<div id="sidebar" class="sidebar hidden">
+  <h3>Menu</h3>
+  <div onclick="toggleLayanan()">Pelayanan</div>
+  <div onclick="showTentang()">Tentang Kami</div>
+  <div onclick="showHubungi()">Hubungi Kami</div>
+  <div onclick="adminLogin()">Login Admin</div>
+  <div onclick="toggleDarkMode()">Dark Mode</div>
+</div>
+
+<!-- LAYANAN -->
 <section id="layanan" class="hidden">
   <h2>Divisi Kami</h2>
   <div id="divisi-list"></div>
 </section>
 
+<!-- DETAIL DIVISI -->
 <section id="detail-divisi" class="hidden"></section>
 
-<section id="tentang">
+<!-- TENTANG -->
+<section id="tentang" class="hidden">
   <h2>Tentang Kami</h2>
-  <p>YN Global adalah holding company transportasi, logistik, penerbangan dan maritim.</p>
+  <p>YN Global adalah holding transportasi, logistik, airline, dan maritim.</p>
 </section>
 
-<footer>
-  <p>© 2026 YN Global</p>
-</footer>
+<!-- HUBUNGI -->
+<section id="hubungi" class="hidden">
+  <h2>Hubungi Kami</h2>
+  <p>Email: info@ynglobal.com</p>
+  <p>Telp: +62 8xxxxxxx</p>
+</section>
 
 <script src="script.js"></script>
 </body>
