@@ -22,7 +22,7 @@ let divisi = [
 ];
 
 function toggleMenu() {
-  document.getElementById("sidebar").classList.toggle("hidden");
+  document.getElementById("sidebar").classList.toggle("active");
 }
 
 function toggleLayanan() {
