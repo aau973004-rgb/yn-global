@@ -7,67 +7,36 @@
 </head>
 <body>
 
-  <header>
+<header>
+  <div class="logo-area">
+    <img src="https://via.placeholder.com/50" class="logo">
     <h1>YN GLOBAL</h1>
-    <nav>
-      <a href="#layanan">Layanan</a>
-      <a href="#tentang">Tentang Kami</a>
-      <a href="#hubungi">Hubungi Kami</a>
-    </nav>
-  </header>
+  </div>
 
-  <!-- STRUKTUR HOLDING -->
-  <section class="holding">
-    <h2>Struktur Perusahaan</h2>
-    <ul>
-      <li>YN Global
-        <ul>
-          <li>YN Transport
-            <ul>
-              <li>YN Trans</li>
-              <li>YN Wisata</li>
-            </ul>
-          </li>
-          <li>YN Logistic
-            <ul>
-              <li>YN Cargo</li>
-              <li>YN Ekspedition</li>
-            </ul>
-          </li>
-          <li>YN Airline</li>
-          <li>YN of The Seas</li>
-        </ul>
-      </li>
-    </ul>
-  </section>
+  <nav>
+    <a onclick="toggleLayanan()">Layanan</a>
+    <a href="#tentang">Tentang Kami</a>
+    <a onclick="adminLogin()">Login Admin</a>
+    <a class="toggle-dark" onclick="toggleDarkMode()">Dark Mode</a>
+  </nav>
+</header>
 
-  <!-- LAYANAN -->
-  <section id="layanan">
-    <h2>Layanan Kami</h2>
-    <div id="divisi-container"></div>
-  </section>
+<section id="layanan" class="hidden">
+  <h2>Divisi Kami</h2>
+  <div id="divisi-list"></div>
+</section>
 
-  <!-- TENTANG -->
-  <section id="tentang">
-    <h2>Tentang Kami</h2>
-    <p>
-      YN Global adalah perusahaan induk yang bergerak di bidang transportasi,
-      logistik, penerbangan, dan pelayaran dengan komitmen melayani Indonesia
-      dan internasional.
-    </p>
-  </section>
+<section id="detail-divisi" class="hidden"></section>
 
-  <!-- HUBUNGI -->
-  <section id="hubungi">
-    <h2>Hubungi Kami</h2>
-    <p>Email: info@ynglobal.com</p>
-    <p>WhatsApp: +62 8xxxxxxx</p>
-  </section>
+<section id="tentang">
+  <h2>Tentang Kami</h2>
+  <p>YN Global adalah holding company transportasi, logistik, penerbangan dan maritim.</p>
+</section>
 
-  <footer>
-    <p>© 2026 YN Global. All Rights Reserved.</p>
-  </footer>
+<footer>
+  <p>© 2026 YN Global</p>
+</footer>
 
-  <script src="script.js"></script>
+<script src="script.js"></script>
 </body>
 </html>
