@@ -5,12 +5,13 @@
 }
 
 body {
-  font-family: Arial;
+  font-family: Arial, sans-serif;
   margin: 0;
   background: var(--gray);
-  transition: 0.3s;
+  transition: background 0.3s, color 0.3s;
 }
 
+/* HEADER */
 header {
   background: var(--primary);
   color: white;
@@ -33,30 +34,40 @@ header {
 .hamburger {
   font-size: 28px;
   cursor: pointer;
+  user-select: none;
 }
 
+/* SIDEBAR */
 .sidebar {
   position: fixed;
   top: 0;
-  right: 0;
+  right: -260px;
   width: 250px;
   height: 100%;
   background: #1e1e1e;
   color: white;
-  padding: 20px;
+  padding: 25px;
+  transition: right 0.3s ease-in-out;
+  z-index: 1000;
+}
+
+.sidebar.active {
+  right: 0;
 }
 
 .sidebar div {
-  margin: 15px 0;
+  margin: 20px 0;
   cursor: pointer;
+  font-size: 16px;
+}
+
+/* CONTENT */
+section {
+  padding: 40px;
 }
 
 .hidden {
   display: none;
-}
-
-section {
-  padding: 40px;
 }
 
 .divisi-card {
@@ -65,6 +76,12 @@ section {
   border-radius: 10px;
   margin-bottom: 15px;
   cursor: pointer;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.divisi-card:hover {
+  transform: scale(1.03);
+  box-shadow: 0 5px 20px rgba(0,0,0,0.2);
 }
 
 .detail-box {
@@ -87,10 +104,10 @@ button {
   padding: 8px 12px;
   margin-top: 10px;
   cursor: pointer;
+  border-radius: 5px;
 }
 
 /* DARK MODE */
-
 body.dark {
   background: var(--dark);
   color: white;
@@ -99,4 +116,8 @@ body.dark {
 body.dark .divisi-card,
 body.dark .detail-box {
   background: #1e1e1e;
+}
+
+body.dark header {
+  background: #8b0000;
 }
