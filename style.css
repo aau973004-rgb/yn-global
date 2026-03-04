@@ -1,0 +1,49 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  background-color: #f5f5f5;
+}
+
+header {
+  background: #0a1f44;
+  color: white;
+  padding: 20px;
+  text-align: center;
+}
+
+nav a {
+  color: white;
+  margin: 0 15px;
+  text-decoration: none;
+}
+
+section {
+  padding: 40px;
+  background: white;
+  margin: 20px;
+  border-radius: 10px;
+}
+
+.holding ul {
+  list-style-type: none;
+}
+
+.holding li {
+  margin: 8px 0;
+}
+
+.divisi-card {
+  background: #eef2f7;
+  padding: 20px;
+  border-radius: 10px;
+  margin-bottom: 20px;
+}
+
+button {
+  padding: 8px 12px;
+  background: #0a1f44;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
